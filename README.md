@@ -31,6 +31,7 @@ const transactions = [
  You can use the module to aggregate the transactions by a field (ie. amount by category):
 
 ```js
+const simplePivot = require('simple-pivot-data')
 simplePivot(transactions, {groupField: 'category', valueField: 'amount'})
 [
   { category: 'Food', amount: [ 10, 20 ], pivotFunction: undefined },
@@ -67,7 +68,7 @@ You can check in the `pivot.js` file all the aggregation functions supported.
 You can run the tests and check the functionality of this module using:
 
 ```sh
-$ npm install && npm test
+$ npm install simple-pivot-data && npm test
 ```
 
 ### License
