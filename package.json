@@ -1,5 +1,5 @@
 {
-  "name": "simple-pivot",
+  "name": "simple-pivot-data",
   "version": "1.0.0",
   "description": "Simple module to pivot an array of objects.",
   "main": "index.js",
