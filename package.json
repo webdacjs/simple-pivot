@@ -1,0 +1,24 @@
+{
+  "name": "simple-pivot",
+  "version": "1.0.0",
+  "description": "Simple module to pivot an array of objects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webdacjs/simple-pivot.git"
+  },
+  "keywords": [
+    "pivot",
+    "array",
+    "object",
+    "aggregate"
+  ],
+  "author": "Juan Convers",
+  "license": "MIT",
+  "dependencies": {
+    "stats-lite": "2.2.0"
+  }
+}
