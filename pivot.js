@@ -28,15 +28,21 @@ const getGroupedObj = (data, groupValues, groupField, valueField) => groupValues
     return obj
   }, {})
 
+function getRowValue ({value, groupedObj, groupField, valueField, pivotFunction}) {
+  const result = {
+    [groupField]: value,
+    [valueField]: getPivotValue(groupedObj[value], pivotFunction),
+    pivotFunction
+  }
+  return result
+}
+
 module.exports = function (data, { groupField, valueField, pivotFunction }) {
   const groupValues = getGroupValues(data, groupField)
   if (groupValues.length === 1 && groupValues[0] === undefined) {
     throw Error(`The groupField '${groupField}' does not exist in the data`)
   }
   const groupedObj = getGroupedObj(data, groupValues, groupField, valueField)
-  return groupValues.map(value => ({
-    [groupField]: value,
-    [valueField]: getPivotValue(groupedObj[value], pivotFunction),
-    pivotFunction
-  }))
+  return groupValues.map(value => getRowValue({
+    value, groupedObj, groupField, valueField, pivotFunction}))
 }
