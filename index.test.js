@@ -54,3 +54,22 @@ test('Testing no pivot function (just grouping)', () => {
   expect(res[0].petal_width.length).toBe(50)
   expect(res[0].pivotFunction).toBe(undefined)
 })
+
+test('Testing sum with valueField array', () => {
+  expect.assertions(3)
+  const res = simplePivot(
+    iris, { groupField: 'species', valueField: ['petal_width'], pivotFunction: 'sum' })
+  expect(res[0].species).toBe('setosa')
+  expect(parseInt(res[0].petal_width)).toBe(12)
+  expect(res[0].pivotFunction).toBe('sum')
+})
+
+test('Testing sum with multiple valueField array', () => {
+  expect.assertions(4)
+  const res = simplePivot(
+    iris, { groupField: 'species', valueField: ['petal_width', 'petal_length'], pivotFunction: 'sum' })
+  expect(res[0].species).toBe('setosa')
+  expect(parseInt(res[0].petal_width)).toBe(12)
+  expect(parseInt(res[0].petal_length)).toBe(73)
+  expect(res[0].pivotFunction).toBe('sum')
+})
