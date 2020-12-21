@@ -119,3 +119,11 @@ test('Testing sum with multiple valueField array', () => {
   expect(parseInt(res[0].petal_length)).toBe(73)
   expect(res[0].pivotFunction).toBe('sum')
 })
+
+// Errors
+test('Testing to group for a non existing field', () => {
+    expect(() => {
+      simplePivot(
+        iris, { groupField: 'non-existing', valueField: ['petal_width'], pivotFunction: 'sum' })
+    }).toThrow();
+})
