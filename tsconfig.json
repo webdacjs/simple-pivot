@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
-      "target": "es5",
+      "target": "es6",
       "lib": ["es2016"],
-      "module": "esnext",
+      "module": "commonjs",
       "strict": true,
       "esModuleInterop": true,
       "moduleResolution": "node",
       "forceConsistentCasingInFileNames": true,
-      "outDir": "./lib/esm",
+      "outDir": "./lib/",
     },
     "include": [
       "./src"

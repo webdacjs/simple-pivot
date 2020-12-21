@@ -32,7 +32,7 @@
     "typescript": "^2.7.1"
   },
   "scripts": {
-    "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "tsc": "tsc -p tsconfig.json",
     "test": "jest --env=node --colors --coverage test",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --fix"
   },
