@@ -21,13 +21,20 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^22.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
     "jest": "^22.1.4",
+    "prettier": "^2.2.1",
     "ts-jest": "^22.0.2",
     "typescript": "^2.7.1"
   },
   "scripts": {
     "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-    "test": "jest --env=node --colors --coverage test"
+    "test": "jest --env=node --colors --coverage test",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix"
   },
   "dependencies": {
     "@types/stats-lite": "^2.2.0",
