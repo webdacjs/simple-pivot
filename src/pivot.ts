@@ -23,12 +23,6 @@ function getRowValue (value: string, pivotconfig: PivotConfig, groupedObj: objec
   return result
 }
 
-type PivotConfig = {
-    groupField: string;
-    valueField: (string | Array<string>);
-    pivotFunction: string;
-  }
-
 export default function (data: Array<object>, pivotconfig: PivotConfig) {
   const groupValues = getGroupValues(data, pivotconfig.groupField)
   if (groupValues.length === 1 && groupValues[0] === undefined) {
