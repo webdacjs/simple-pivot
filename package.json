@@ -1,24 +1,43 @@
 {
   "name": "simple-pivot-data",
-  "version": "1.1.0",
+  "version": "2.0.1",
   "description": "Simple module to pivot an array of objects.",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "files": [
+    "lib/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/webdacjs/simple-pivot.git"
   },
+  "author": "Juan Convers",
   "keywords": [
     "pivot",
     "array",
     "object",
     "aggregate"
   ],
-  "author": "Juan Convers",
   "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^22.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "jest": "^22.1.4",
+    "prettier": "^2.2.1",
+    "ts-jest": "^22.0.2",
+    "typescript": "^2.7.1"
+  },
+  "scripts": {
+    "tsc": "tsc -p tsconfig.json",
+    "test": "jest --env=node --colors --coverage test",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix"
+  },
   "dependencies": {
-    "stats-lite": "2.2.0"
+    "@types/stats-lite": "^2.2.0",
+    "stats-lite": "^2.2.0"
   }
 }
