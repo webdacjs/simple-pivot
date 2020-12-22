@@ -116,3 +116,10 @@ test('Testing to group for a non existing field', () => {
         simplePivot(iris, { groupField: 'non-existing', valueField: ['petal_width'], pivotFunction: 'sum' })
     }).toThrow()
 })
+
+test('Testing to omit value field', () => {
+    expect(() => {
+        simplePivot(iris, { groupField: 'species'})
+    }).toThrow()
+})
+
