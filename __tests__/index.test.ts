@@ -1,4 +1,3 @@
-// import { readJsonConfigFile } from 'typescript'
 import simplePivot from '../src/index'
 import players from './players.json'
 

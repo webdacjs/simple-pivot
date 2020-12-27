@@ -3,8 +3,8 @@ import * as stats from 'stats-lite'
 export default function getPivotValue(valueArray: Array<object>, pivotFunction: string) {
     const valueArrayNumeric = valueArray.map((val) => +val)
     const fns: { [functionName: string]: Function } = {
-        count: () => valueArrayNumeric.filter((x) => x).length,
-        counta: () => valueArrayNumeric.length,
+        count: () => valueArray.filter((x) => x).length,
+        counta: () => valueArray.length,
         min: () => valueArrayNumeric.sort()[0],
         max: () => valueArrayNumeric.sort().reverse()[0],
         sum: () => stats.sum(valueArrayNumeric),
