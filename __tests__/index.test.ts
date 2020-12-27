@@ -11,6 +11,16 @@ test('Testing sum', () => {
     expect(res[0].pivotFunction).toBe('sum')
 })
 
+test('Testing sum using array groupfield', () => {
+    expect.assertions(5)
+    const res = simplePivot(players, { groupField: ['gender'], valueField: 'goals', pivotFunction: 'sum' })
+    expect(res[0].gender).toBe('male')
+    expect(parseInt(res[0].goals)).toBe(15)
+    expect(res[1].gender).toBe('female')
+    expect(parseInt(res[1].goals)).toBe(22)
+    expect(res[0].pivotFunction).toBe('sum')
+})
+
 test('Testing count', () => {
     expect.assertions(3)
     const res = simplePivot(players, { groupField: 'colour', valueField: 'name', pivotFunction: 'count' })
