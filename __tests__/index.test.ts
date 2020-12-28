@@ -1,4 +1,6 @@
 import simplePivot from '../src/index'
+import {separator} from '../src/settings'
+
 import players from './players.json'
 
 test('Testing sum', () => {
@@ -19,6 +21,19 @@ test('Testing sum using array groupfield', () => {
     expect(res[1].gender).toBe('female')
     expect(parseInt(res[1].goals)).toBe(22)
     expect(res[0].pivotFunction).toBe('sum')
+})
+
+test('Testing sum using array groupfield & valueField', () => {
+    expect.assertions(6)
+    const groupTestFields = ['gender', 'country']
+    const res = simplePivot(players, { groupField: groupTestFields, valueField: ['shots', 'goals'], pivotFunction: 'sum' })
+    expect(res[0][groupTestFields.join(separator)]).toBe(`male${separator}USA`)
+    expect(parseInt(res[0].goals)).toBe(2)
+    expect(parseInt(res[0].shots)).toBe(10)
+
+    expect(res[1][groupTestFields.join(separator)]).toBe(`male${separator}Germany`)
+    expect(parseInt(res[1].goals)).toBe(3)
+    expect(parseInt(res[1].shots)).toBe(5)
 })
 
 test('Testing count', () => {
