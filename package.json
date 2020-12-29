@@ -21,7 +21,6 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^22.1.1",
-    "@types/lodash.merge": "^4.6.6",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
     "eslint": "^7.16.0",
@@ -39,7 +38,6 @@
   },
   "dependencies": {
     "@types/stats-lite": "^2.2.0",
-    "lodash.merge": "^4.6.2",
     "stats-lite": "^2.2.0"
   }
 }
