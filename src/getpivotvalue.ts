@@ -15,5 +15,6 @@ export default function getPivotValue(valueArray: Array<object>, pivotFunction: 
         mode: () => stats.mode(valueArrayNumeric),
     }
     const availableFns = Object.keys(fns)
-    return availableFns.includes(pivotFunction) ? fns[pivotFunction]() : valueArray
+    const results: string | number | Array<string> = availableFns.includes(pivotFunction) ? fns[pivotFunction]() : valueArray
+    return results
 }

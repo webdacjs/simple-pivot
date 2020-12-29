@@ -23,6 +23,18 @@ test('Testing sum using array groupfield', () => {
     expect(res[0].pivotFunction).toBe('sum')
 })
 
+test('Testing sum using array groupfield && getTree', () => {
+    expect.assertions(6)
+    const res = simplePivot(players, 
+        { groupField: ['gender'], valueField: 'goals', pivotFunction: 'sum', getTree: true })
+    expect(res.columns[0]).toBe('gender')
+    expect(res.columns[1]).toBe('goals')
+    expect(res.values[0][0]).toBe('male')
+    expect(res.values[1][0]).toBe('female')
+    expect(res.values[0][1]).toBe(15)
+    expect(res.values[1][1]).toBe(22)
+})
+
 test('Testing sum using array groupfield & valueField', () => {
     expect.assertions(6)
     const groupTestFields = ['gender', 'country']
@@ -34,6 +46,21 @@ test('Testing sum using array groupfield & valueField', () => {
     expect(res[1][groupTestFields.join(separator)]).toBe(`male${separator}Germany`)
     expect(parseInt(res[1].goals)).toBe(3)
     expect(parseInt(res[1].shots)).toBe(5)
+})
+
+test('Testing sum using array groupfield & valueField & getTree', () => {
+    expect.assertions(4)
+    const groupTestFields = ['gender', 'country']
+    const res = simplePivot(players, { 
+        groupField: groupTestFields, 
+        valueField: ['shots', 'goals'], 
+        pivotFunction: 'sum',
+        getTree: true
+    })
+    expect(res.columns[0]).toBe('gender')
+    expect(res.columns[1]).toBe('country')
+    expect(Object.keys(res.values)[0]).toBe('male')
+    expect(Object.keys(res.values.male)[0]).toBe('USA')
 })
 
 test('Testing count', () => {
