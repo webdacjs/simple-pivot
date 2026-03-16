@@ -1,1 +1,1 @@
-export const separator = '----'
+export const separator = '----' as const

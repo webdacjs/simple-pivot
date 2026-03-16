@@ -1,15 +1,25 @@
 {
     "compilerOptions": {
-      "target": "es6",
-      "lib": ["es2016"],
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "moduleResolution": "node",
-      "forceConsistentCasingInFileNames": true,
-      "outDir": "./lib/",
+        "target": "ES2022",
+        "lib": ["ES2022"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "outDir": "./lib/",
+        "resolveJsonModule": true
     },
     "include": [
-      "./src"
+        "./src"
     ],
+    "exclude": [
+        "node_modules",
+        "lib",
+        "__tests__"
+    ]
 }

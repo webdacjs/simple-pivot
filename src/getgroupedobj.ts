@@ -1,32 +1,33 @@
-import {separator} from './settings'
+import { separator } from './settings'
 
-const isArray = (val: any) => Array.isArray(val)
-
-function getMultiFieldFilter (obj: object, item: string, groupField: Array<string>) {
-    let flag = true
+function getMultiFieldFilter(obj: Record<string, unknown>, item: string, groupField: string[]): boolean {
     const itemSplit = item.split(separator)
-    groupField.forEach((element, i) => {
-        if ((<any>obj)[element] !== itemSplit[i]) {
-            flag = false
-        }
-    })
-    return flag
+    return groupField.every((element, i) => obj[element] === itemSplit[i])
 }
 
-function groupedFilter(data: Array<object>, item: string, groupField: string | Array<string>) {
-    if (isArray(groupField) && groupField.length === 1) {
-        return data.filter((x) => (<any>x)[groupField[0]] === item)
-    } else if (isArray(groupField) && groupField.length > 1) {
-        return data.filter(obj => getMultiFieldFilter(obj, item, [...groupField]))
+function groupedFilter(
+    data: Record<string, unknown>[],
+    item: string,
+    groupField: string | string[],
+): Record<string, unknown>[] {
+    if (Array.isArray(groupField) && groupField.length === 1) {
+        return data.filter((x) => x[groupField[0]] === item)
     }
-    return data.filter((x) => (<any>x)[groupField.toString()] === item)
+    if (Array.isArray(groupField) && groupField.length > 1) {
+        return data.filter((obj) => getMultiFieldFilter(obj, item, [...groupField]))
+    }
+    return data.filter((x) => x[groupField.toString()] === item)
 }
 
-export default function getGroupedObj(data: Array<object>, groupValues: Array<string>, groupField: string | Array<string>): object {
-    return groupValues.reduce(
-        (obj: object, item: string) => ({
+export default function getGroupedObj(
+    data: Record<string, unknown>[],
+    groupValues: string[],
+    groupField: string | string[],
+): Record<string, Record<string, unknown>[]> {
+    return groupValues.reduce<Record<string, Record<string, unknown>[]>>(
+        (obj, item) => ({
             ...obj,
-            [item]: groupedFilter(data, item, groupField)            
+            [item]: groupedFilter(data, item, groupField),
         }),
         {},
     )
