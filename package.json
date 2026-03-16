@@ -1,6 +1,6 @@
 {
     "name": "simple-pivot-data",
-    "version": "5.0.0",
+    "version": "6.0.0",
     "description": "Simple module to pivot an array of objects.",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
